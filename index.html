@@ -1364,6 +1364,7 @@ function toggleFaq(btn) {
   }
 }
 
+// Replace YOUR_WEBAPP_URL with the URL from Step 2
 const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbyw3Xco16xlzj1yuqsEAvRnic4ooPT2G5Qf4NGEqolLG69Pc7CYSbbkp-EK_8T0KmuR/exec';
 
 async function handleWaitlist(e) {
@@ -1381,7 +1382,7 @@ async function handleWaitlist(e) {
   try {
     const response = await fetch(WAITLIST_URL, {
       method: 'POST',
-      mode: 'no-cors',
+      mode: 'no-cors', // This helps avoid CORS issues
       headers: {
         'Content-Type': 'application/json',
       },
@@ -1397,6 +1398,7 @@ async function handleWaitlist(e) {
     btn.style.background = '#1DB87A';
     emailInput.value = '';
     
+    // Optional: Send to another service like Mailchimp later
     console.log('Waitlist signup:', email);
     
   } catch (error) {
@@ -1419,68 +1421,6 @@ async function handleWaitlist(e) {
     btn.disabled = false;
   }, 3000);
 }
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // SUCCESS - Make it VERY obvious
-    
-    // 1. Change button to success state (keep it green)
-    btn.innerHTML = '<i class="fa-solid fa-check"></i> You\'re on the list! ✓';
-    btn.style.background = '#1DB87A';
-    
-    // 2. Clear the input
-    //emailInput.value = '';
-    
-    // 3. Add a persistent success message below the form
-    let successMsg = document.getElementById('waitlist-success-msg');
-    if (!successMsg) {
-      successMsg = document.createElement('div');
-      successMsg.id = 'waitlist-success-msg';
-      successMsg.style.marginTop = '1rem';
-      successMsg.style.padding = '0.75rem';
-      successMsg.style.backgroundColor = 'rgba(29, 184, 122, 0.1)';
-      successMsg.style.border = '1px solid #1DB87A';
-      successMsg.style.borderRadius = '8px';
-      successMsg.style.color = '#1DB87A';
-      successMsg.style.fontSize = '14px';
-      form.parentNode.insertBefore(successMsg, form.nextSibling);
-    }
-    
-    successMsg.innerHTML = '<i class="fa-solid fa-envelope"></i> Thanks ' + email.split('@')[0] + '! You\'ll hear from us when PersonaIQ launches.';
-    successMsg.style.display = 'block';
-    
-    // 4. Keep the button green permanently (don't reset)
-    // But allow new submissions from other users
-    btn.disabled = false;
-    btn.innerHTML = originalBtnText;
-    btn.style.background = originalBtnBg;
-    
-    console.log('Waitlist signup:', email);
-    
-  } catch (error) {
-    console.error('Error:', error);
-    btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Try again';
-    btn.style.background = '#FF4444';
-    
-    setTimeout(() => {
-      btn.innerHTML = originalBtnText;
-      btn.style.background = originalBtnBg;
-      btn.disabled = false;
-    }, 3000);
-  }
-}
-
-// Add this to validate as user types
-document.addEventListener('DOMContentLoaded', function() {
-  const emailInput = document.getElementById('email');
-  if (emailInput) {
-    emailInput.addEventListener('input', function() {
-      // Clear any visual errors when user starts typing
-      this.style.borderColor = '';
-      this.style.border = '';
-    });
-  }
-});
 
 // Make sure all FAQ buttons have the click handler
 document.addEventListener('DOMContentLoaded', function() {
