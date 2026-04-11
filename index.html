@@ -1364,37 +1364,17 @@ function toggleFaq(btn) {
   }
 }
 
-// Replace YOUR_WEBAPP_URL with the URL from Step 2
 const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbyw3Xco16xlzj1yuqsEAvRnic4ooPT2G5Qf4NGEqolLG69Pc7CYSbbkp-EK_8T0KmuR/exec';
 
 async function handleWaitlist(e) {
   e.preventDefault();
   
   const emailInput = document.getElementById('email');
-  const email = emailInput.value.trim();
+  const email = emailInput.value;
   const btn = e.target.querySelector('button');
   const originalBtnText = btn.innerHTML;
-  const originalBtnBg = btn.style.background;
-  const form = e.target;
   
-  // Validate email first
-  if (!email || !email.includes('@') || !email.includes('.')) {
-    btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Enter valid email';
-    btn.style.background = '#FF4444';
-    emailInput.style.borderColor = '#FF4444';
-    
-    setTimeout(() => {
-      btn.innerHTML = originalBtnText;
-      btn.style.background = originalBtnBg;
-      emailInput.style.borderColor = '';
-    }, 2000);
-    return;
-  }
-  
-  // Prevent double submission
-  if (btn.disabled) return;
-  
-  // Show loading
+  // Show loading state
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Adding...';
   btn.disabled = true;
   
@@ -1402,13 +1382,43 @@ async function handleWaitlist(e) {
     const response = await fetch(WAITLIST_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ 
         email: email,
         source: window.location.pathname || 'landing_page',
         timestamp: new Date().toISOString()
       })
     });
+    
+    // Show success
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> You\'re on the list!';
+    btn.style.background = '#1DB87A';
+    emailInput.value = '';
+    
+    console.log('Waitlist signup:', email);
+    
+  } catch (error) {
+    console.error('Error:', error);
+    btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Try again';
+    btn.style.background = '#FF4444';
+    
+    setTimeout(() => {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+    return;
+  }
+  
+  // Reset button after 3 seconds
+  setTimeout(() => {
+    btn.innerHTML = originalBtnText;
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 3000);
+}
     
     await new Promise(resolve => setTimeout(resolve, 1000));
     
