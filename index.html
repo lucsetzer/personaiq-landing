@@ -1374,79 +1374,70 @@ async function handleWaitlist(e) {
   const email = emailInput.value.trim();
   const btn = e.target.querySelector('button');
   const originalBtnText = btn.innerHTML;
+  const originalBtnBg = btn.style.background;
   
-  // Validate email immediately
+  // Validate email first
   if (!email || !email.includes('@') || !email.includes('.')) {
-    // Show error without calling the script
-    btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Valid email required';
+    btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Enter valid email';
     btn.style.background = '#FF4444';
+    emailInput.style.borderColor = '#FF4444';
     
     setTimeout(() => {
       btn.innerHTML = originalBtnText;
-      btn.style.background = '';
+      btn.style.background = originalBtnBg;
+      emailInput.style.borderColor = '';
     }, 2000);
     return;
   }
   
-  // Prevent multiple rapid submissions
-  if (btn.disabled) {
-    console.log('Already submitting');
-    return;
-  }
+  // Prevent double submission
+  if (btn.disabled) return;
   
-  // Show loading state
+  // Show loading - DON'T clear email yet
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Adding...';
   btn.disabled = true;
   
-  // Create a form data object (Google Scripts prefers this)
-  const formData = new URLSearchParams();
-  formData.append('email', email);
-  formData.append('source', window.location.pathname || 'landing_page');
-  formData.append('timestamp', new Date().toISOString());
-  
   try {
-    // Use a timeout to prevent hanging
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000);
-    
-    // For Google Scripts, use POST with form data instead of JSON
     const response = await fetch(WAITLIST_URL, {
       method: 'POST',
       mode: 'no-cors',
-      cache: 'no-cache',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formData.toString(),
-      signal: controller.signal
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        email: email,
+        source: window.location.pathname || 'landing_page',
+        timestamp: new Date().toISOString()
+      })
     });
     
-    clearTimeout(timeoutId);
+    // With no-cors, we can't read response, so assume success after a delay
+    // This gives Google Scripts time to process
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // With no-cors, we can't read response, so assume success
-    // But add a delay to prevent race conditions
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    // Show success
+    // ONLY NOW clear the email and show success
     btn.innerHTML = '<i class="fa-solid fa-check"></i> You\'re on the list!';
     btn.style.background = '#1DB87A';
-    emailInput.value = '';
+    emailInput.value = '';  // Clear email ONLY after success
     console.log('Waitlist signup:', email);
+    
+    // Reset button after 3 seconds (ONE reset only)
+    setTimeout(() => {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = originalBtnBg;
+      btn.disabled = false;
+    }, 3000);
     
   } catch (error) {
     console.error('Error:', error);
     btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Try again';
     btn.style.background = '#FF4444';
-  }
-  
-  // Reset button after 3 seconds
-  setTimeout(() => {
-    if (btn.innerHTML !== originalBtnText) {
+    
+    // DON'T clear the email on error - let user retry
+    setTimeout(() => {
       btn.innerHTML = originalBtnText;
-      btn.style.background = '';
+      btn.style.background = originalBtnBg;
       btn.disabled = false;
-    }
-  }, 3000);
+    }, 3000);
+  }
 }
 
 // Add this to validate as user types
