@@ -1397,7 +1397,16 @@ async function handleWaitlist(e) {
     btn.innerHTML = '<i class="fa-solid fa-check"></i> You\'re on the list!';
     btn.style.background = '#1DB87A';
     emailInput.value = '';
-    
+
+    const form = e.target;
+    let successMsg = document.getElementById('waitlist-success');
+    if (!successMsg) {
+      successMsg = document.createElement('p');
+      successMsg.id = 'waitlist-success';
+      successMsg.style.cssText = 'color:#1DB87A;font-size:13px;margin-top:8px;text-align:center;';
+      successMsg.innerHTML = '<i class="fa-solid fa-check"></i> You\'re on the list — we\'ll be in touch soon.';
+      form.after(successMsg);
+    }
     // Optional: Send to another service like Mailchimp later
     console.log('Waitlist signup:', email);
     
@@ -1419,7 +1428,7 @@ async function handleWaitlist(e) {
     btn.innerHTML = originalBtnText;
     btn.style.background = '';
     btn.disabled = false;
-  }, 3000);
+  }, 8000);
 }
 
 // Make sure all FAQ buttons have the click handler
