@@ -1371,56 +1371,95 @@ async function handleWaitlist(e) {
   e.preventDefault();
   
   const emailInput = document.getElementById('email');
-  const email = emailInput.value;
+  const email = emailInput.value.trim();
   const btn = e.target.querySelector('button');
   const originalBtnText = btn.innerHTML;
+  
+  // Validate email immediately
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    // Show error without calling the script
+    btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Valid email required';
+    btn.style.background = '#FF4444';
+    
+    setTimeout(() => {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = '';
+    }, 2000);
+    return;
+  }
+  
+  // Prevent multiple rapid submissions
+  if (btn.disabled) {
+    console.log('Already submitting');
+    return;
+  }
   
   // Show loading state
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Adding...';
   btn.disabled = true;
   
+  // Create a form data object (Google Scripts prefers this)
+  const formData = new URLSearchParams();
+  formData.append('email', email);
+  formData.append('source', window.location.pathname || 'landing_page');
+  formData.append('timestamp', new Date().toISOString());
+  
   try {
+    // Use a timeout to prevent hanging
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+    
+    // For Google Scripts, use POST with form data instead of JSON
     const response = await fetch(WAITLIST_URL, {
       method: 'POST',
-      mode: 'no-cors', // This helps avoid CORS issues
+      mode: 'no-cors',
+      cache: 'no-cache',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: JSON.stringify({ 
-        email: email,
-        source: window.location.pathname || 'landing_page',
-        timestamp: new Date().toISOString()
-      })
+      body: formData.toString(),
+      signal: controller.signal
     });
+    
+    clearTimeout(timeoutId);
+    
+    // With no-cors, we can't read response, so assume success
+    // But add a delay to prevent race conditions
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     // Show success
     btn.innerHTML = '<i class="fa-solid fa-check"></i> You\'re on the list!';
     btn.style.background = '#1DB87A';
     emailInput.value = '';
-    
-    // Optional: Send to another service like Mailchimp later
     console.log('Waitlist signup:', email);
     
   } catch (error) {
     console.error('Error:', error);
     btn.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Try again';
     btn.style.background = '#FF4444';
-    
-    setTimeout(() => {
-      btn.innerHTML = originalBtnText;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 3000);
-    return;
   }
   
   // Reset button after 3 seconds
   setTimeout(() => {
-    btn.innerHTML = originalBtnText;
-    btn.style.background = '';
-    btn.disabled = false;
+    if (btn.innerHTML !== originalBtnText) {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = '';
+      btn.disabled = false;
+    }
   }, 3000);
 }
+
+// Add this to validate as user types
+document.addEventListener('DOMContentLoaded', function() {
+  const emailInput = document.getElementById('email');
+  if (emailInput) {
+    emailInput.addEventListener('input', function() {
+      // Clear any visual errors when user starts typing
+      this.style.borderColor = '';
+      this.style.border = '';
+    });
+  }
+});
 
 // Make sure all FAQ buttons have the click handler
 document.addEventListener('DOMContentLoaded', function() {
