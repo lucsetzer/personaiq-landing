@@ -186,6 +186,26 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--pink); outline-
 </style>
 </head>
 <body>
+<!-- LOADING SCREEN -->
+<div id="loading-screen" aria-live="polite" aria-label="Running PersonaIQ analysis" style="position:fixed;inset:0;background:#080808;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;font-family:'Inter',sans-serif;">
+  <div style="width:100%;max-width:520px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:2.5rem;">
+      <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,45,120,0.12);border:0.5px solid rgba(255,45,120,0.3);display:flex;align-items:center;justify-content:center;color:#FF2D78;font-size:14px;"><i class="fa-solid fa-brain"></i></div>
+      <span style="font-family:'Clash Display',sans-serif;font-size:18px;font-weight:700;color:#f0f0f0;letter-spacing:-0.02em;">Persona<span style="color:#FF2D78;">IQ</span></span>
+    </div>
+    <div style="font-size:13px;color:#9a9a9a;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;">
+      <span id="loading-label">Initializing personas...</span>
+      <span id="loading-pct" style="color:#FF2D78;font-weight:500;font-size:13px;">0%</span>
+    </div>
+    <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:999px;overflow:hidden;margin-bottom:2rem;">
+      <div id="loading-bar" style="height:100%;width:0%;background:#FF2D78;border-radius:999px;transition:width 0.3s ease;"></div>
+    </div>
+    <div style="min-height:80px;">
+      <div id="thought-line" style="font-size:13px;color:#666;font-style:italic;line-height:1.65;transition:opacity 0.3s;opacity:1;"></div>
+    </div>
+  </div>
+</div>
+<div id="main-content" style="opacity:0;transition:opacity 0.8s ease;">
 <nav class="topnav" aria-label="Report navigation">
   <div class="topnav-inner">
     <a href="https://personaiq.app" class="nav-logo" aria-label="PersonaIQ home">
@@ -325,6 +345,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--pink); outline-
     <div>Sample report · 7 personas · 4m 12s avg session</div>
   </footer>
 </main>
+</div>
 <script>
 document.querySelectorAll('.tps-btn').forEach(btn => {
   btn.addEventListener('click', function() {
@@ -344,6 +365,60 @@ document.querySelectorAll('.persona-row').forEach(row => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
   });
 });
+</script>
+
+<script>
+(function() {
+  var steps = [
+    { pct: 8,  label: "Launching 7 personas...", thought: "" },
+    { pct: 18, label: "Diane is navigating the landing page...", thought: "Diane: "Ok, I get what this does. Let me find the pricing before I do anything else."" },
+    { pct: 28, label: "Margaret is reading the homepage...", thought: "Margaret: "This looks interesting but I'm not sure what I'm supposed to click first."" },
+    { pct: 38, label: "Marcus found the sign up button...", thought: "Marcus: "Good — straightforward CTA. Let's go. I have 3 minutes."" },
+    { pct: 48, label: "Diane is searching for pricing...", thought: "Diane: "I've been scrolling for 30 seconds. There's no pricing anywhere. This is a red flag."" },
+    { pct: 56, label: "DeShawn is testing keyboard navigation...", thought: "DeShawn: "Focus just jumped to the footer after that modal closed. I lost my place completely."" },
+    { pct: 65, label: "Margaret encountered a layout change...", thought: "Margaret: "Everything looks different now. Did I do something wrong? I don't know how to go back."" },
+    { pct: 74, label: "Priya completed the goal...", thought: "Priya: "Clean signup. Tab order works. API docs right where I expected. I'd pay for this."" },
+    { pct: 82, label: "Aaliyah reviewing privacy policy...", thought: "Aaliyah: "The privacy link is buried in the footer. That's a blocker for my security team."" },
+    { pct: 90, label: "Generating friction scores...", thought: "Marcus: "Empty dashboard with no onboarding. I have 47 other tabs. I'm done."" },
+    { pct: 96, label: "Compiling key findings...", thought: "6 of 7 personas never found the pricing page." },
+    { pct: 100, label: "Analysis complete.", thought: "" }
+  ];
+
+  var bar = document.getElementById('loading-bar');
+  var label = document.getElementById('loading-label');
+  var pct = document.getElementById('loading-pct');
+  var thought = document.getElementById('thought-line');
+  var screen = document.getElementById('loading-screen');
+  var main = document.getElementById('main-content');
+
+  var i = 0;
+  function nextStep() {
+    if (i >= steps.length) {
+      setTimeout(function() {
+        screen.style.opacity = '0';
+        screen.style.transition = 'opacity 0.6s ease';
+        main.style.opacity = '1';
+        setTimeout(function() { screen.style.display = 'none'; }, 700);
+      }, 300);
+      return;
+    }
+    var s = steps[i];
+    bar.style.width = s.pct + '%';
+    label.textContent = s.label;
+    pct.textContent = s.pct + '%';
+    if (s.thought) {
+      thought.style.opacity = '0';
+      setTimeout(function() {
+        thought.textContent = s.thought;
+        thought.style.opacity = '1';
+      }, 200);
+    }
+    i++;
+    var delay = i === steps.length ? 600 : 380;
+    setTimeout(nextStep, delay);
+  }
+  setTimeout(nextStep, 400);
+})();
 </script>
 </body>
 </html>
