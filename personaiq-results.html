@@ -34,77 +34,29 @@
   --font-body: 'Inter', sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* TOP NAV */
-.topnav {
-  border-bottom: 0.5px solid var(--border);
-  background: rgba(8,8,8,0.95);
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: blur(12px);
-}
-.topnav-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 1rem; height: 56px;
-  display: flex; align-items: center; justify-content: space-between;
-}
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.6; min-height: 100vh; }
+.topnav { border-bottom: 0.5px solid var(--border); background: rgba(8,8,8,0.95); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); }
+.topnav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.nav-logo-icon {
-  width: 28px; height: 28px; border-radius: 7px;
-  background: var(--pink-dim); border: 0.5px solid var(--pink-border);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--pink); font-size: 12px;
-}
+.nav-logo-icon { width: 28px; height: 28px; border-radius: 7px; background: var(--pink-dim); border: 0.5px solid var(--pink-border); display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 12px; }
 .nav-logo-text { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
 .nav-logo-text span { color: var(--pink); }
 .nav-meta { display: flex; align-items: center; gap: 1rem; }
 .nav-badge { font-size: 11px; padding: 3px 10px; border-radius: 999px; font-weight: 500; }
 .badge-danger { background: var(--red-dim); color: var(--red); border: 0.5px solid var(--red-border); }
 .badge-info { background: var(--pink-dim); color: var(--pink); border: 0.5px solid var(--pink-border); }
-.nav-share {
-  display: flex; align-items: center; gap: 6px;
-  background: var(--bg-elevated); border: 0.5px solid var(--border-mid);
-  border-radius: 8px; padding: 6px 14px;
-  font-size: 12px; color: var(--text-secondary); cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-}
+.nav-share { display: flex; align-items: center; gap: 6px; background: var(--bg-elevated); border: 0.5px solid var(--border-mid); border-radius: 8px; padding: 6px 14px; font-size: 12px; color: var(--text-secondary); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
 .nav-share:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
-
-/* LAYOUT */
-.page { padding: 1rem; }
-
-/* REPORT HEADER */
-.report-header {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 2rem; align-items: start;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 0.5px solid var(--border);
-}
+.page { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.report-header { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); }
 .report-eyebrow { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pink); font-weight: 500; margin-bottom: 5px; }
 .report-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 6px; }
 .report-url { font-size: 12px; color: var(--text-tertiary); display: flex; align-items: center; gap: 6px; }
-.report-url i { color: var(--pink); font-size: 10px; }
 .report-stats { display: flex; gap: 1.5rem; }
 .rstat { text-align: right; }
 .rstat-num { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text); line-height: 1; }
 .rstat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-tertiary); margin-top: 2px; }
-
-/* SUMMARY STRIP */
-.summary-strip {
-  display: grid; grid-template-columns: 140px 1fr;
-  gap: 1.5rem; align-items: center;
-  background: var(--bg-surface); border: 0.5px solid var(--border-mid);
-  border-radius: 14px; padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
+.summary-strip { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; align-items: center; background: var(--bg-surface); border: 0.5px solid var(--border-mid); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem; }
 .big-score { text-align: center; border-right: 0.5px solid var(--border); padding-right: 1.5rem; }
 .big-score-num { font-family: var(--font-display); font-size: 64px; font-weight: 800; color: var(--red); line-height: 1; letter-spacing: -0.03em; }
 .big-score-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin-top: 4px; }
@@ -113,29 +65,16 @@ body {
 .insight-row { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 .insight-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
 .insight-row strong { color: var(--text); font-weight: 500; }
-
-/* GRID LAYOUT */
 .main-grid { display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; margin-bottom: 1.5rem; }
-
-/* FLOW CHART */
 .panel { background: var(--bg-surface); border: 0.5px solid var(--border); border-radius: 14px; padding: 1.25rem; }
 .panel-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
 .panel-title i { color: var(--pink); font-size: 11px; }
-
 .flow-steps { display: flex; align-items: flex-end; gap: 0; height: 160px; position: relative; margin-bottom: 8px; }
 .flow-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; }
 .flow-bar-wrap { width: 100%; display: flex; justify-content: center; align-items: flex-end; height: 130px; }
-.flow-bar {
-  width: 52px; border-radius: 6px 6px 0 0;
-  position: relative; cursor: pointer;
-  transition: opacity 0.2s;
-}
+.flow-bar { width: 52px; border-radius: 6px 6px 0 0; position: relative; cursor: pointer; transition: opacity 0.2s; }
 .flow-bar:hover { opacity: 0.85; }
-.flow-bar-val {
-  position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
-  font-size: 13px; font-weight: 600; font-family: var(--font-display);
-  white-space: nowrap;
-}
+.flow-bar-val { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 600; font-family: var(--font-display); white-space: nowrap; }
 .bar-low { background: linear-gradient(180deg, #1DB87A 0%, rgba(29,184,122,0.4) 100%); }
 .bar-low .flow-bar-val { color: var(--green); }
 .bar-mid { background: linear-gradient(180deg, #F5A623 0%, rgba(245,166,35,0.4) 100%); }
@@ -146,23 +85,11 @@ body {
 .bar-pink .flow-bar-val { color: var(--pink); }
 .flow-step-label { font-size: 10px; color: var(--text-tertiary); text-align: center; line-height: 1.3; width: 100%; padding: 0 4px; }
 .flow-baseline { border-top: 0.5px solid var(--border); margin-top: 4px; }
-
-/* PERSONA BREAKDOWN SIDEBAR */
 .persona-list { display: flex; flex-direction: column; gap: 8px; }
-.persona-row {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px; border-radius: 10px;
-  border: 0.5px solid var(--border);
-  background: var(--bg); cursor: pointer;
-  transition: border-color 0.2s;
-}
+.persona-row { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 10px; border: 0.5px solid var(--border); background: var(--bg); cursor: pointer; transition: border-color 0.2s; }
 .persona-row:hover { border-color: var(--border-mid); }
 .persona-row.active { border-color: var(--pink-border); background: #0e0608; }
-.persona-avatar {
-  width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 600; flex-shrink: 0;
-}
+.persona-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; }
 .av-red { background: var(--red-dim); color: var(--red); border: 0.5px solid var(--red-border); }
 .av-pink { background: var(--pink-dim); color: var(--pink); border: 0.5px solid var(--pink-border); }
 .av-amber { background: var(--amber-dim); color: var(--amber); border: 0.5px solid var(--amber-border); }
@@ -178,13 +105,8 @@ body {
 .sp-amber { background: var(--amber-dim); color: var(--amber); }
 .sp-green { background: var(--green-dim); color: var(--green); }
 .sp-pink { background: var(--pink-dim); color: var(--pink); }
-
-/* HEATMAP */
 .heatmap-section { margin-bottom: 1.5rem; }
-.heatmap-wrap {
-  background: var(--bg-surface); border: 0.5px solid var(--border);
-  border-radius: 14px; padding: 1.25rem;
-}
+.heatmap-wrap { background: var(--bg-surface); border: 0.5px solid var(--border); border-radius: 14px; padding: 1.25rem; }
 .heatmap-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(6, 36px); gap: 3px; margin-bottom: 10px; }
 .hmap-cell { border-radius: 4px; transition: transform 0.15s; cursor: crosshair; }
 .hmap-cell:hover { transform: scale(1.15); z-index: 2; }
@@ -200,15 +122,8 @@ body {
 .legend-bar { display: flex; gap: 2px; }
 .legend-swatch { width: 20px; height: 8px; border-radius: 2px; }
 .heatmap-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-tertiary); margin-bottom: 6px; }
-
-/* PERSONA DETAIL CARDS */
 .persona-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
-.pcard {
-  background: var(--bg-surface); border: 0.5px solid var(--border);
-  border-radius: 14px; padding: 1.25rem;
-  transition: border-color 0.2s;
-}
-.pcard:hover { border-color: var(--border-mid); }
+.pcard { background: var(--bg-surface); border: 0.5px solid var(--border); border-radius: 14px; padding: 1.25rem; transition: border-color 0.2s; }
 .pcard.critical { border-color: var(--red-border); background: #0d0808; }
 .pcard.warning { border-color: var(--amber-border); background: #0d0b07; }
 .pcard.success { border-color: var(--green-border); background: #080d0a; }
@@ -221,12 +136,7 @@ body {
 .score-r { color: var(--red); }
 .score-a { color: var(--amber); }
 .score-g { color: var(--green); }
-.pcard-quote {
-  font-size: 12px; color: var(--text-secondary);
-  font-style: italic; line-height: 1.65;
-  border-left: 2px solid var(--border-mid);
-  padding-left: 10px; margin-bottom: 12px;
-}
+.pcard-quote { font-size: 12px; color: var(--text-secondary); font-style: italic; line-height: 1.65; border-left: 2px solid var(--border-mid); padding-left: 10px; margin-bottom: 12px; }
 .pcard.critical .pcard-quote { border-left-color: var(--red); }
 .pcard.warning .pcard-quote { border-left-color: var(--amber); }
 .pcard.success .pcard-quote { border-left-color: var(--green); }
@@ -235,18 +145,11 @@ body {
 .pcard-stuck strong { color: var(--text-secondary); display: block; font-size: 11px; font-weight: 400; margin-top: 1px; }
 .pcard-time { font-size: 11px; color: var(--text-tertiary); text-align: right; }
 .pcard-time strong { color: var(--text-secondary); display: block; font-size: 11px; font-weight: 400; margin-top: 1px; }
-
-/* TRANSCRIPT TIMELINE */
 .transcript-section { margin-bottom: 1.5rem; }
 .transcript-wrap { background: var(--bg-surface); border: 0.5px solid var(--border); border-radius: 14px; padding: 1.25rem; }
 .transcript-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
 .transcript-persona-select { display: flex; gap: 6px; flex-wrap: wrap; }
-.tps-btn {
-  font-size: 11px; padding: 4px 12px; border-radius: 999px;
-  border: 0.5px solid var(--border-mid); background: transparent;
-  color: var(--text-secondary); cursor: pointer; font-family: var(--font-body);
-  transition: all 0.15s;
-}
+.tps-btn { font-size: 11px; padding: 4px 12px; border-radius: 999px; border: 0.5px solid var(--border-mid); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: var(--font-body); transition: all 0.15s; }
 .tps-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
 .tps-btn.active { background: var(--pink-dim); border-color: var(--pink-border); color: var(--pink); }
 .timeline { display: flex; flex-direction: column; gap: 0; }
@@ -263,137 +166,46 @@ body {
 .tf-low { background: var(--green-dim); color: var(--green); }
 .tf-mid { background: var(--amber-dim); color: var(--amber); }
 .tf-high { background: var(--red-dim); color: var(--red); }
-
-/* KEY FINDING */
-.key-finding {
-  background: var(--pink-dim); border: 0.5px solid var(--pink-border);
-  border-radius: 14px; padding: 1.5rem;
-  display: grid; grid-template-columns: auto 1fr auto;
-  gap: 1.25rem; align-items: center;
-  margin-bottom: 1.5rem;
-}
+.key-finding { background: var(--pink-dim); border: 0.5px solid var(--pink-border); border-radius: 14px; padding: 1.5rem; display: grid; grid-template-columns: auto 1fr auto; gap: 1.25rem; align-items: center; margin-bottom: 1.5rem; }
 .kf-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,45,120,0.15); display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 18px; flex-shrink: 0; }
 .kf-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--pink); margin-bottom: 4px; }
 .kf-body { font-size: 13px; color: #cc6080; line-height: 1.65; }
 .kf-stat { text-align: center; border-left: 0.5px solid var(--pink-border); padding-left: 1.25rem; }
 .kf-stat-num { font-family: var(--font-display); font-size: 32px; font-weight: 800; color: var(--pink); line-height: 1; }
 .kf-stat-label { font-size: 10px; color: #cc6080; text-transform: uppercase; letter-spacing: 0.07em; margin-top: 3px; }
-
-/* FOOTER */
-.report-footer {
-  border-top: 0.5px solid var(--border); padding-top: 1.25rem;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 12px; color: var(--text-tertiary);
-}
+.report-footer { border-top: 0.5px solid var(--border); padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-tertiary); }
 .footer-logo { display: flex; align-items: center; gap: 6px; }
 .footer-logo i { color: var(--pink); }
-
-/* ANIMATIONS */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 .page > * { animation: fadeUp 0.5s ease both; }
-.page > *:nth-child(1) { animation-delay: 0.05s; }
-.page > *:nth-child(2) { animation-delay: 0.1s; }
-.page > *:nth-child(3) { animation-delay: 0.15s; }
-.page > *:nth-child(4) { animation-delay: 0.2s; }
-.page > *:nth-child(5) { animation-delay: 0.25s; }
-.page > *:nth-child(6) { animation-delay: 0.3s; }
-.page > *:nth-child(7) { animation-delay: 0.35s; }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-}
-
-/* ── MOBILE FIRST ── base styles are mobile, scale up */
-
-/* Page padding — tight on mobile */
-.page { padding: 1rem; }
-.topnav-inner { padding: 0 1rem; }
-
-/* Report header — stacked on mobile */
-.report-header { grid-template-columns: 1fr; gap: 1rem; }
-.report-stats { justify-content: flex-start; gap: 1rem; flex-wrap: wrap; }
-.rstat { text-align: left; }
-.rstat-num { font-size: 18px; }
-
-/* Summary strip — stacked on mobile */
-.summary-strip { grid-template-columns: 1fr; gap: 1rem; }
-.big-score { border-right: none; border-bottom: 0.5px solid var(--border); padding-right: 0; padding-bottom: 1rem; margin-bottom: 0; text-align: left; display: flex; align-items: center; gap: 1rem; }
-.big-score-num { font-size: 48px; }
-
-/* Main grid — stacked on mobile */
-.main-grid { grid-template-columns: 1fr; }
-
-/* Persona cards — single col on mobile */
-.persona-cards-grid { grid-template-columns: 1fr; }
-
-/* Key finding — stacked on mobile */
-.key-finding { grid-template-columns: 1fr; gap: 1rem; }
-.kf-stat { border-left: none; border-top: 0.5px solid var(--pink-border); padding-left: 0; padding-top: 1rem; text-align: left; }
-
-/* Nav meta — hide badges on mobile, keep share */
-.nav-badge { display: none; }
-.nav-share { font-size: 11px; padding: 5px 10px; }
-
-/* Transcript selector — wrap on mobile */
-.transcript-header { flex-direction: column; gap: 10px; align-items: flex-start; }
-
-/* Flow bars — slightly smaller on mobile */
-.flow-steps { height: 130px; }
-.flow-bar { width: 38px; }
-.flow-bar-val { font-size: 11px; }
-.flow-step-label { font-size: 9px; }
-
-/* Heatmap — scale down on mobile */
-.heatmap-grid { grid-template-rows: repeat(6, 28px); gap: 2px; }
-
-/* ── TABLET 640px+ ── */
-@media (min-width: 640px) {
-  .page { padding: 1.5rem; }
-  .topnav-inner { padding: 0 1.5rem; }
-  .persona-cards-grid { grid-template-columns: 1fr 1fr; }
-  .nav-badge { display: inline-flex; }
-  .big-score { display: block; text-align: center; border-right: none; border-bottom: 0.5px solid var(--border); padding-bottom: 1rem; }
-  .big-score-num { font-size: 56px; }
-  .summary-strip { grid-template-columns: 1fr; }
-  .flow-bar { width: 48px; }
-  .flow-bar-val { font-size: 12px; }
-  .flow-step-label { font-size: 10px; }
-  .heatmap-grid { grid-template-rows: repeat(6, 32px); }
-  .transcript-header { flex-direction: row; align-items: center; }
-  .key-finding { grid-template-columns: auto 1fr; }
-  .kf-stat { display: none; }
-}
-
-/* ── DESKTOP 900px+ ── */
-@media (min-width: 900px) {
-  .page { padding: 2rem; max-width: 1200px; margin: 0 auto; }
-  .topnav-inner { padding: 0 2rem; max-width: 1200px; margin: 0 auto; }
-  .report-header { grid-template-columns: 1fr auto; gap: 2rem; }
-  .report-stats { gap: 1.5rem; }
-  .rstat { text-align: right; }
-  .rstat-num { font-size: 22px; }
-  .summary-strip { grid-template-columns: 140px 1fr; }
-  .big-score { border-right: 0.5px solid var(--border); border-bottom: none; padding-right: 1.5rem; padding-bottom: 0; display: block; text-align: center; }
-  .big-score-num { font-size: 64px; }
-  .main-grid { grid-template-columns: 1fr 340px; }
-  .persona-cards-grid { grid-template-columns: repeat(3, 1fr); }
-  .key-finding { grid-template-columns: auto 1fr auto; }
-  .kf-stat { display: block; border-left: 0.5px solid var(--pink-border); border-top: none; padding-left: 1.25rem; padding-top: 0; text-align: center; }
-  .nav-badge { display: inline-flex; }
-  .flow-bar { width: 52px; }
-  .flow-bar-val { font-size: 13px; }
-  .flow-step-label { font-size: 10px; }
-  .heatmap-grid { grid-template-rows: repeat(6, 36px); gap: 3px; }
-}
-
-
-/* Focus styles */
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } .persona-cards-grid { grid-template-columns: 1fr 1fr; } .report-header { grid-template-columns: 1fr; } .key-finding { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .persona-cards-grid { grid-template-columns: 1fr; } .page { padding: 1rem; } .summary-strip { grid-template-columns: 1fr; } .big-score { border-right: none; border-bottom: 0.5px solid var(--border); padding-right: 0; padding-bottom: 1rem; } }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 </style>
 </head>
 <body>
-
-<!-- TOP NAV -->
+<!-- LOADING SCREEN -->
+<div id="loading-screen" aria-live="polite" aria-label="Running PersonaIQ analysis" style="position:fixed;inset:0;background:#080808;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;font-family:'Inter',sans-serif;">
+  <div style="width:100%;max-width:520px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:2.5rem;">
+      <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,45,120,0.12);border:0.5px solid rgba(255,45,120,0.3);display:flex;align-items:center;justify-content:center;color:#FF2D78;font-size:14px;"><i class="fa-solid fa-brain"></i></div>
+      <span style="font-family:'Clash Display',sans-serif;font-size:18px;font-weight:700;color:#f0f0f0;letter-spacing:-0.02em;">Persona<span style="color:#FF2D78;">IQ</span></span>
+    </div>
+    <div style="font-size:13px;color:#9a9a9a;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;">
+      <span id="loading-label">Initializing personas...</span>
+      <span id="loading-pct" style="color:#FF2D78;font-weight:500;font-size:13px;">0%</span>
+    </div>
+    <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:999px;overflow:hidden;margin-bottom:2rem;">
+      <div id="loading-bar" style="height:100%;width:0%;background:#FF2D78;border-radius:999px;transition:width 0.3s ease;"></div>
+    </div>
+    <div style="min-height:80px;">
+      <div id="thought-line" style="font-size:13px;color:#666;font-style:italic;line-height:1.65;transition:opacity 0.3s;opacity:1;"></div>
+    </div>
+  </div>
+</div>
+<div id="main-content" style="opacity:0;transition:opacity 0.8s ease;">
 <nav class="topnav" aria-label="Report navigation">
   <div class="topnav-inner">
     <a href="https://personaiq.app" class="nav-logo" aria-label="PersonaIQ home">
@@ -401,225 +213,83 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--pink); outline-
       <span class="nav-logo-text">Persona<span>IQ</span></span>
     </a>
     <div class="nav-meta">
-      <span class="nav-badge badge-danger" aria-label="Test status: High friction detected">High friction detected</span>
-      <span class="nav-badge badge-info">Report #2847</span>
-      <button class="nav-share" aria-label="Share this report" type="button">
+      <span class="nav-badge badge-danger">High friction detected</span>
+      <span class="nav-badge badge-info">Sample report</span>
+      <button class="nav-share" aria-label="Share this report" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText(window.location.href);this.innerHTML='<i class=\'fa-solid fa-check\'></i> Copied!';">
         <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
         Share report
       </button>
     </div>
   </div>
 </nav>
-
 <main class="page" id="main">
-
-  <!-- REPORT HEADER -->
   <header class="report-header" aria-labelledby="report-title">
     <div>
-      <div class="report-eyebrow">Test report · March 28, 2026</div>
+      <div class="report-eyebrow">Sample report · March 28, 2026</div>
       <h1 class="report-title" id="report-title">Onboarding flow audit</h1>
-      <div class="report-url">
-        <i class="fa-solid fa-link" aria-hidden="true"></i>
-        synthiqlabs.com/onboarding · Goal: Sign up and create first project
-      </div>
+      <div class="report-url"><i class="fa-solid fa-link" aria-hidden="true"></i> codedecipher.app · Goal: Sign up and submit a GitHub repository</div>
     </div>
     <div class="report-stats" role="list" aria-label="Test summary statistics">
-      <div class="rstat" role="listitem">
-        <div class="rstat-num">7</div>
-        <div class="rstat-label">Personas</div>
-      </div>
-      <div class="rstat" role="listitem">
-        <div class="rstat-num">5</div>
-        <div class="rstat-label">Steps</div>
-      </div>
-      <div class="rstat" role="listitem">
-        <div class="rstat-num">4m 12s</div>
-        <div class="rstat-label">Avg session</div>
-      </div>
-      <div class="rstat" role="listitem">
-        <div class="rstat-num">3 of 7</div>
-        <div class="rstat-label">Completed goal</div>
-      </div>
+      <div class="rstat" role="listitem"><div class="rstat-num">7</div><div class="rstat-label">Personas</div></div>
+      <div class="rstat" role="listitem"><div class="rstat-num">5</div><div class="rstat-label">Steps</div></div>
+      <div class="rstat" role="listitem"><div class="rstat-num">4m 12s</div><div class="rstat-label">Avg session</div></div>
+      <div class="rstat" role="listitem"><div class="rstat-num">3 of 7</div><div class="rstat-label">Completed</div></div>
     </div>
   </header>
-
-  <!-- SUMMARY STRIP -->
   <section class="summary-strip" aria-labelledby="summary-heading">
     <div class="big-score">
-      <div class="big-score-num" aria-label="Average friction score: 7.8 out of 10">7.8</div>
+      <div class="big-score-num" aria-label="Average friction score 7.8">7.8</div>
       <div class="big-score-label">Avg friction score</div>
       <div class="big-score-sub"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Critical issues found</div>
     </div>
-    <div class="summary-insights" aria-label="Key insights">
-      <h2 id="summary-heading" class="visually-hidden">Summary insights</h2>
-      <div class="insight-row">
-        <div class="insight-dot" style="background:var(--red)" aria-hidden="true"></div>
-        <div><strong>5 of 7 personas abandoned before completing the goal</strong> — most dropped off at step 3 when asked to create a project with no guidance.</div>
-      </div>
-      <div class="insight-row">
-        <div class="insight-dot" style="background:var(--red)" aria-hidden="true"></div>
-        <div><strong>Pricing was never found by 6 of 7 personas</strong> — the pricing page link is buried in the footer and not visible during the signup flow.</div>
-      </div>
-      <div class="insight-row">
-        <div class="insight-dot" style="background:var(--amber)" aria-hidden="true"></div>
-        <div><strong>The signup form has 9 fields</strong> — 4 personas explicitly mentioned the form felt excessive before they'd seen any product value.</div>
-      </div>
-      <div class="insight-row">
-        <div class="insight-dot" style="background:var(--green)" aria-hidden="true"></div>
-        <div><strong>The landing page performed well</strong> — all 7 personas understood the product concept within 30 seconds. The hero copy is working.</div>
-      </div>
+    <div class="summary-insights" aria-labelledby="summary-heading">
+      <h2 id="summary-heading" class="visually-hidden">Key insights</h2>
+      <div class="insight-row"><div class="insight-dot" style="background:var(--red)"></div><div><strong>5 of 7 personas abandoned before completing the goal</strong> — most dropped off at step 3 when asked to create a project with no guidance.</div></div>
+      <div class="insight-row"><div class="insight-dot" style="background:var(--red)"></div><div><strong>Pricing was never found by 6 of 7 personas</strong> — the pricing page link is buried in the footer and not visible during the signup flow.</div></div>
+      <div class="insight-row"><div class="insight-dot" style="background:var(--amber)"></div><div><strong>The signup form has 9 fields</strong> — 4 personas explicitly mentioned the form felt excessive before they'd seen any product value.</div></div>
+      <div class="insight-row"><div class="insight-dot" style="background:var(--green)"></div><div><strong>The landing page performed well</strong> — all 7 personas understood the product concept within 30 seconds.</div></div>
     </div>
   </section>
-
-  <!-- FLOW CHART + PERSONA SIDEBAR -->
   <div class="main-grid">
     <section class="panel" aria-labelledby="flow-heading">
-      <div class="panel-title"><i class="fa-solid fa-chart-column" aria-hidden="true"></i> <span id="flow-heading">Friction by step</span></div>
-      <div class="flow-steps" role="img" aria-label="Bar chart showing friction scores by step: Landing page 2.1, Sign up 6.4, Create project 9.2, First action 7.8, Confirmation 4.1">
-        <div class="flow-col">
-          <div class="flow-bar-wrap">
-            <div class="flow-bar bar-low" style="height:29%" aria-hidden="true">
-              <div class="flow-bar-val">2.1</div>
-            </div>
-          </div>
-          <div class="flow-step-label">Landing page</div>
-        </div>
-        <div class="flow-col">
-          <div class="flow-bar-wrap">
-            <div class="flow-bar bar-mid" style="height:64%" aria-hidden="true">
-              <div class="flow-bar-val">6.4</div>
-            </div>
-          </div>
-          <div class="flow-step-label">Sign up</div>
-        </div>
-        <div class="flow-col">
-          <div class="flow-bar-wrap">
-            <div class="flow-bar bar-high" style="height:92%" aria-hidden="true">
-              <div class="flow-bar-val">9.2</div>
-            </div>
-          </div>
-          <div class="flow-step-label">Create project</div>
-        </div>
-        <div class="flow-col">
-          <div class="flow-bar-wrap">
-            <div class="flow-bar bar-pink" style="height:78%" aria-hidden="true">
-              <div class="flow-bar-val">7.8</div>
-            </div>
-          </div>
-          <div class="flow-step-label">First action</div>
-        </div>
-        <div class="flow-col">
-          <div class="flow-bar-wrap">
-            <div class="flow-bar bar-mid" style="height:41%" aria-hidden="true">
-              <div class="flow-bar-val">4.1</div>
-            </div>
-          </div>
-          <div class="flow-step-label">Confirmation</div>
-        </div>
+      <div class="panel-title"><i class="fa-solid fa-chart-column" aria-hidden="true"></i><span id="flow-heading">Friction by step</span></div>
+      <div class="flow-steps" role="img" aria-label="Bar chart: Landing 2.1, Sign up 6.4, Create project 9.2, First action 7.8, Confirmation 4.1">
+        <div class="flow-col"><div class="flow-bar-wrap"><div class="flow-bar bar-low" style="height:29%" aria-hidden="true"><div class="flow-bar-val">2.1</div></div></div><div class="flow-step-label">Landing page</div></div>
+        <div class="flow-col"><div class="flow-bar-wrap"><div class="flow-bar bar-mid" style="height:64%" aria-hidden="true"><div class="flow-bar-val">6.4</div></div></div><div class="flow-step-label">Sign up</div></div>
+        <div class="flow-col"><div class="flow-bar-wrap"><div class="flow-bar bar-high" style="height:92%" aria-hidden="true"><div class="flow-bar-val">9.2</div></div></div><div class="flow-step-label">Create project</div></div>
+        <div class="flow-col"><div class="flow-bar-wrap"><div class="flow-bar bar-pink" style="height:78%" aria-hidden="true"><div class="flow-bar-val">7.8</div></div></div><div class="flow-step-label">First action</div></div>
+        <div class="flow-col"><div class="flow-bar-wrap"><div class="flow-bar bar-mid" style="height:41%" aria-hidden="true"><div class="flow-bar-val">4.1</div></div></div><div class="flow-step-label">Confirmation</div></div>
       </div>
       <div class="flow-baseline" aria-hidden="true"></div>
-
-      <!-- COMPLETION RATE -->
-      <div style="margin-top:1.25rem; display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
-        <div style="background:var(--bg); border:0.5px solid var(--border); border-radius:10px; padding:10px; text-align:center;">
-          <div style="font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--red);">43%</div>
-          <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-tertiary); margin-top:2px;">Goal completion</div>
-        </div>
-        <div style="background:var(--bg); border:0.5px solid var(--border); border-radius:10px; padding:10px; text-align:center;">
-          <div style="font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--amber);">Step 3</div>
-          <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-tertiary); margin-top:2px;">Top drop-off point</div>
-        </div>
-        <div style="background:var(--bg); border:0.5px solid var(--border); border-radius:10px; padding:10px; text-align:center;">
-          <div style="font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--green);">1m 47s</div>
-          <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-tertiary); margin-top:2px;">Fastest completion</div>
-        </div>
+      <div style="margin-top:1.25rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <div style="background:var(--bg);border:0.5px solid var(--border);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--red);">43%</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-tertiary);margin-top:2px;">Goal completion</div></div>
+        <div style="background:var(--bg);border:0.5px solid var(--border);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--amber);">Step 3</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-tertiary);margin-top:2px;">Top drop-off</div></div>
+        <div style="background:var(--bg);border:0.5px solid var(--border);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--green);">1m 47s</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-tertiary);margin-top:2px;">Fastest completion</div></div>
       </div>
     </section>
-
-    <!-- PERSONA SIDEBAR -->
     <section class="panel" aria-labelledby="personas-heading">
-      <div class="panel-title"><i class="fa-solid fa-users" aria-hidden="true"></i> <span id="personas-heading">Personas</span></div>
+      <div class="panel-title"><i class="fa-solid fa-users" aria-hidden="true"></i><span id="personas-heading">Personas</span></div>
       <nav class="persona-list" aria-label="Persona results">
-        <div class="persona-row active" tabindex="0" role="button" aria-pressed="true" aria-label="The skeptical CFO, friction score 9.4, selected">
-          <div class="persona-avatar av-red">SC</div>
-          <div class="persona-info">
-            <div class="persona-name">The skeptical CFO</div>
-            <div class="persona-role">Risk-averse · Abandoned step 3</div>
-          </div>
-          <span class="score-pill sp-red">9.4</span>
-        </div>
-        <div class="persona-row" tabindex="0" role="button" aria-pressed="false" aria-label="The confused senior, friction score 8.7">
-          <div class="persona-avatar av-pink">ES</div>
-          <div class="persona-info">
-            <div class="persona-name">The confused senior</div>
-            <div class="persona-role">Low tech literacy · Abandoned step 2</div>
-          </div>
-          <span class="score-pill sp-pink">8.7</span>
-        </div>
-        <div class="persona-row" tabindex="0" role="button" aria-pressed="false" aria-label="The busy founder, friction score 7.9">
-          <div class="persona-avatar av-amber">BF</div>
-          <div class="persona-info">
-            <div class="persona-name">The busy founder</div>
-            <div class="persona-role">Impatient · Abandoned step 4</div>
-          </div>
-          <span class="score-pill sp-amber">7.9</span>
-        </div>
-        <div class="persona-row" tabindex="0" role="button" aria-pressed="false" aria-label="The cautious PM, friction score 6.2">
-          <div class="persona-avatar av-blue">MP</div>
-          <div class="persona-info">
-            <div class="persona-name">The cautious PM</div>
-            <div class="persona-role">Process-driven · Completed</div>
-          </div>
-          <span class="score-pill sp-amber">6.2</span>
-        </div>
-        <div class="persona-row" tabindex="0" role="button" aria-pressed="false" aria-label="The mobile user, friction score 8.1">
-          <div class="persona-avatar av-purple">MU</div>
-          <div class="persona-info">
-            <div class="persona-name">The mobile user</div>
-            <div class="persona-role">iPhone SE · Abandoned step 3</div>
-          </div>
-          <span class="score-pill sp-pink">8.1</span>
-        </div>
-        <div class="persona-row" tabindex="0" role="button" aria-pressed="false" aria-label="The first time user, friction score 5.8">
-          <div class="persona-avatar av-teal">FT</div>
-          <div class="persona-info">
-            <div class="persona-name">The first-time user</div>
-            <div class="persona-role">No prior context · Completed</div>
-          </div>
-          <span class="score-pill sp-amber">5.8</span>
-        </div>
-        <div class="persona-row" tabindex="0" role="button" aria-pressed="false" aria-label="The power user dev, friction score 1.8">
-          <div class="persona-avatar av-green">PD</div>
-          <div class="persona-info">
-            <div class="persona-name">The power-user dev</div>
-            <div class="persona-role">Technical · Completed fastest</div>
-          </div>
-          <span class="score-pill sp-green">1.8</span>
-        </div>
+        <div class="persona-row active" tabindex="0" role="button" aria-pressed="true"><div class="persona-avatar av-red">DI</div><div class="persona-info"><div class="persona-name">Diane, 52 — Skeptical CFO</div><div class="persona-role">Risk-averse · Abandoned step 3</div></div><span class="score-pill sp-red">9.4</span></div>
+        <div class="persona-row" tabindex="0" role="button" aria-pressed="false"><div class="persona-avatar av-pink">MG</div><div class="persona-info"><div class="persona-name">Margaret, 68 — Confused senior</div><div class="persona-role">Low tech literacy · Abandoned step 2</div></div><span class="score-pill sp-pink">8.7</span></div>
+        <div class="persona-row" tabindex="0" role="button" aria-pressed="false"><div class="persona-avatar av-amber">MC</div><div class="persona-info"><div class="persona-name">Marcus, 34 — Busy founder</div><div class="persona-role">Impatient · Abandoned step 4</div></div><span class="score-pill sp-amber">7.9</span></div>
+        <div class="persona-row" tabindex="0" role="button" aria-pressed="false"><div class="persona-avatar av-blue">AL</div><div class="persona-info"><div class="persona-name">Aaliyah, 38 — Cautious PM</div><div class="persona-role">Process-driven · Completed</div></div><span class="score-pill sp-amber">6.2</span></div>
+        <div class="persona-row" tabindex="0" role="button" aria-pressed="false"><div class="persona-avatar av-purple">DS</div><div class="persona-info"><div class="persona-name">DeShawn, 35 — Screen reader user</div><div class="persona-role">Keyboard-only · Abandoned step 3</div></div><span class="score-pill sp-pink">8.1</span></div>
+        <div class="persona-row" tabindex="0" role="button" aria-pressed="false"><div class="persona-avatar av-teal">JD</div><div class="persona-info"><div class="persona-name">Jordan, 24 — First-time user</div><div class="persona-role">No prior context · Completed</div></div><span class="score-pill sp-amber">5.8</span></div>
+        <div class="persona-row" tabindex="0" role="button" aria-pressed="false"><div class="persona-avatar av-green">PR</div><div class="persona-info"><div class="persona-name">Priya, 31 — Power-user dev</div><div class="persona-role">Technical · Completed fastest</div></div><span class="score-pill sp-green">1.8</span></div>
       </nav>
     </section>
   </div>
-
-  <!-- HEATMAP -->
   <section class="heatmap-section" aria-labelledby="heatmap-heading">
     <div class="heatmap-wrap">
-      <div class="panel-title"><i class="fa-solid fa-fire" aria-hidden="true"></i> <span id="heatmap-heading">Attention heatmap — where personas focused and struggled</span></div>
-      <div class="heatmap-labels" aria-hidden="true">
-        <span>← Top left (nav)</span>
-        <span>Top right (CTA) →</span>
-      </div>
-      <div class="heatmap-grid" role="img" aria-label="Heatmap visualization showing high friction concentration in the center-right area of the page corresponding to the signup form and create project step">
-        <!-- Row 1: nav area - low activity -->
+      <div class="panel-title"><i class="fa-solid fa-fire" aria-hidden="true"></i><span id="heatmap-heading">Attention heatmap — where personas focused and struggled</span></div>
+      <div class="heatmap-labels" aria-hidden="true"><span>← Top left (nav)</span><span>Top right (CTA) →</span></div>
+      <div class="heatmap-grid" role="img" aria-label="Heatmap showing high friction in center-right area corresponding to signup form">
         <div class="hmap-cell h1"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h1"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h1"></div><div class="hmap-cell h2"></div><div class="hmap-cell h3"></div><div class="hmap-cell h2"></div>
-        <!-- Row 2: hero area - medium -->
         <div class="hmap-cell h1"></div><div class="hmap-cell h2"></div><div class="hmap-cell h3"></div><div class="hmap-cell h4"></div><div class="hmap-cell h4"></div><div class="hmap-cell h3"></div><div class="hmap-cell h2"></div><div class="hmap-cell h3"></div><div class="hmap-cell h4"></div><div class="hmap-cell h5"></div><div class="hmap-cell h4"></div><div class="hmap-cell h3"></div>
-        <!-- Row 3: form area - high friction -->
         <div class="hmap-cell h2"></div><div class="hmap-cell h3"></div><div class="hmap-cell h4"></div><div class="hmap-cell h6"></div><div class="hmap-cell h7"></div><div class="hmap-cell h7"></div><div class="hmap-cell h6"></div><div class="hmap-cell h5"></div><div class="hmap-cell h4"></div><div class="hmap-cell h3"></div><div class="hmap-cell h2"></div><div class="hmap-cell h1"></div>
-        <!-- Row 4: create project - highest friction -->
         <div class="hmap-cell h1"></div><div class="hmap-cell h2"></div><div class="hmap-cell h5"></div><div class="hmap-cell h7"></div><div class="hmap-cell h7"></div><div class="hmap-cell h7"></div><div class="hmap-cell h7"></div><div class="hmap-cell h6"></div><div class="hmap-cell h4"></div><div class="hmap-cell h2"></div><div class="hmap-cell h1"></div><div class="hmap-cell h0"></div>
-        <!-- Row 5: lower page -->
         <div class="hmap-cell h1"></div><div class="hmap-cell h1"></div><div class="hmap-cell h2"></div><div class="hmap-cell h3"></div><div class="hmap-cell h4"></div><div class="hmap-cell h3"></div><div class="hmap-cell h2"></div><div class="hmap-cell h1"></div><div class="hmap-cell h1"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div>
-        <!-- Row 6: footer area -->
         <div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h1"></div><div class="hmap-cell h1"></div><div class="hmap-cell h1"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div><div class="hmap-cell h0"></div>
       </div>
       <div class="heatmap-legend" aria-hidden="true">
@@ -636,238 +306,55 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--pink); outline-
       </div>
     </div>
   </section>
-
-  <!-- PERSONA DETAIL CARDS -->
   <section aria-labelledby="cards-heading">
-    <div class="panel-title" style="margin-bottom:1rem;"><i class="fa-solid fa-id-card" aria-hidden="true"></i> <span id="cards-heading">Persona thought transcripts</span></div>
+    <div class="panel-title" style="margin-bottom:1rem;"><i class="fa-solid fa-id-card" aria-hidden="true"></i><span id="cards-heading">Persona thought transcripts</span></div>
     <div class="persona-cards-grid">
-      <article class="pcard critical" aria-label="Skeptical CFO persona result">
-        <div class="pcard-header">
-          <div class="pcard-avatar av-red">SC</div>
-          <div class="pcard-meta">
-            <div class="pcard-name">The skeptical CFO</div>
-            <div class="pcard-role">Risk-averse · Budget-conscious</div>
-          </div>
-          <div class="pcard-score score-r" aria-label="Friction score 9.4">9.4</div>
-        </div>
-        <blockquote class="pcard-quote">"I can't find the pricing anywhere. Am I supposed to hand over my card before I know what this costs? Absolutely not. I'm done."</blockquote>
-        <div class="pcard-footer">
-          <div class="pcard-stuck">
-            Abandoned at
-            <strong>Step 3 — no pricing visible</strong>
-          </div>
-          <div class="pcard-time">Session
-            <strong>1m 12s</strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard critical" aria-label="Confused senior persona result">
-        <div class="pcard-header">
-          <div class="pcard-avatar av-pink">ES</div>
-          <div class="pcard-meta">
-            <div class="pcard-name">The confused senior</div>
-            <div class="pcard-role">Low tech literacy · Cautious</div>
-          </div>
-          <div class="pcard-score score-r" aria-label="Friction score 8.7">8.7</div>
-        </div>
-        <blockquote class="pcard-quote">"Too many buttons. I pressed 'get started' and now everything looks different. Did I break something? I don't know how to go back."</blockquote>
-        <div class="pcard-footer">
-          <div class="pcard-stuck">
-            Abandoned at
-            <strong>Step 2 — confused by layout shift</strong>
-          </div>
-          <div class="pcard-time">Session
-            <strong>2m 03s</strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard critical" aria-label="Mobile user persona result">
-        <div class="pcard-header">
-          <div class="pcard-avatar av-purple">MU</div>
-          <div class="pcard-meta">
-            <div class="pcard-name">The mobile user</div>
-            <div class="pcard-role">iPhone SE · Small screen</div>
-          </div>
-          <div class="pcard-score score-r" aria-label="Friction score 8.1">8.1</div>
-        </div>
-        <blockquote class="pcard-quote">"The form fields are way too small to tap on my phone. I keep hitting the wrong input. And the submit button is half off screen."</blockquote>
-        <div class="pcard-footer">
-          <div class="pcard-stuck">
-            Abandoned at
-            <strong>Step 3 — mobile form unusable</strong>
-          </div>
-          <div class="pcard-time">Session
-            <strong>3m 41s</strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard warning" aria-label="Busy founder persona result">
-        <div class="pcard-header">
-          <div class="pcard-avatar av-amber">BF</div>
-          <div class="pcard-meta">
-            <div class="pcard-name">The busy founder</div>
-            <div class="pcard-role">Impatient · Outcome-focused</div>
-          </div>
-          <div class="pcard-score score-a" aria-label="Friction score 7.9">7.9</div>
-        </div>
-        <blockquote class="pcard-quote">"Signed up. Now I'm staring at an empty dashboard. Where's the tutorial? Where do I start? I have 3 minutes for this."</blockquote>
-        <div class="pcard-footer">
-          <div class="pcard-stuck">
-            Abandoned at
-            <strong>Step 4 — empty state, no guidance</strong>
-          </div>
-          <div class="pcard-time">Session
-            <strong>4m 18s</strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard warning" aria-label="Cautious PM persona result">
-        <div class="pcard-header">
-          <div class="pcard-avatar av-blue">MP</div>
-          <div class="pcard-meta">
-            <div class="pcard-name">The cautious PM</div>
-            <div class="pcard-role">Process-driven · Detail-oriented</div>
-          </div>
-          <div class="pcard-score score-a" aria-label="Friction score 6.2">6.2</div>
-        </div>
-        <blockquote class="pcard-quote">"I need to see a privacy policy before I connect anything. The link is in the footer — that's not good enough for my security team."</blockquote>
-        <div class="pcard-footer">
-          <div class="pcard-stuck">
-            Completed with friction
-            <strong>Step 2 — privacy info hard to find</strong>
-          </div>
-          <div class="pcard-time">Session
-            <strong>6m 55s</strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard success" aria-label="Power user developer persona result">
-        <div class="pcard-header">
-          <div class="pcard-avatar av-green">PD</div>
-          <div class="pcard-meta">
-            <div class="pcard-name">The power-user dev</div>
-            <div class="pcard-role">Technical · Keyboard-driven</div>
-          </div>
-          <div class="pcard-score score-g" aria-label="Friction score 1.8">1.8</div>
-        </div>
-        <blockquote class="pcard-quote">"Clean signup. Tab order works perfectly. API docs are exactly where I expected. This is well built. I'd pay for this."</blockquote>
-        <div class="pcard-footer">
-          <div class="pcard-stuck">
-            Completed goal
-            <strong>No friction points logged</strong>
-          </div>
-          <div class="pcard-time">Session
-            <strong>1m 47s</strong>
-          </div>
-        </div>
-      </article>
+      <article class="pcard critical"><div class="pcard-header"><div class="pcard-avatar av-red">DI</div><div class="pcard-meta"><div class="pcard-name">Diane, 52</div><div class="pcard-role">The skeptical CFO</div></div><div class="pcard-score score-r">9.4</div></div><blockquote class="pcard-quote">"I can't find the pricing anywhere. Am I supposed to hand over my card before I know what this costs? Absolutely not. I'm done."</blockquote><div class="pcard-footer"><div class="pcard-stuck">Abandoned at<strong>Step 3 — no pricing visible</strong></div><div class="pcard-time">Session<strong>1m 12s</strong></div></div></article>
+      <article class="pcard critical"><div class="pcard-header"><div class="pcard-avatar av-pink">MG</div><div class="pcard-meta"><div class="pcard-name">Margaret, 68</div><div class="pcard-role">The confused senior</div></div><div class="pcard-score score-r">8.7</div></div><blockquote class="pcard-quote">"Too many buttons. I pressed 'get started' and now everything looks different. Did I break something? I don't know how to go back."</blockquote><div class="pcard-footer"><div class="pcard-stuck">Abandoned at<strong>Step 2 — confused by layout shift</strong></div><div class="pcard-time">Session<strong>2m 03s</strong></div></div></article>
+      <article class="pcard critical"><div class="pcard-header"><div class="pcard-avatar av-purple">DS</div><div class="pcard-meta"><div class="pcard-name">DeShawn, 35</div><div class="pcard-role">The screen reader user</div></div><div class="pcard-score score-r">8.1</div></div><blockquote class="pcard-quote">"Focus jumped to the footer on modal close. I lost my place completely. There are no ARIA labels on these buttons."</blockquote><div class="pcard-footer"><div class="pcard-stuck">Abandoned at<strong>Step 3 — broken focus management</strong></div><div class="pcard-time">Session<strong>3m 41s</strong></div></div></article>
+      <article class="pcard warning"><div class="pcard-header"><div class="pcard-avatar av-amber">MC</div><div class="pcard-meta"><div class="pcard-name">Marcus, 34</div><div class="pcard-role">The busy founder</div></div><div class="pcard-score score-a">7.9</div></div><blockquote class="pcard-quote">"Signed up. Now I'm staring at an empty dashboard. Where's the tutorial? Where do I start? I have 3 minutes for this."</blockquote><div class="pcard-footer"><div class="pcard-stuck">Abandoned at<strong>Step 4 — empty state, no guidance</strong></div><div class="pcard-time">Session<strong>4m 18s</strong></div></div></article>
+      <article class="pcard warning"><div class="pcard-header"><div class="pcard-avatar av-blue">AL</div><div class="pcard-meta"><div class="pcard-name">Aaliyah, 38</div><div class="pcard-role">The cautious PM</div></div><div class="pcard-score score-a">6.2</div></div><blockquote class="pcard-quote">"I need to see a privacy policy before I connect anything. The link is in the footer — that's not good enough for my security team."</blockquote><div class="pcard-footer"><div class="pcard-stuck">Completed with friction<strong>Step 2 — privacy info hard to find</strong></div><div class="pcard-time">Session<strong>6m 55s</strong></div></div></article>
+      <article class="pcard success"><div class="pcard-header"><div class="pcard-avatar av-green">PR</div><div class="pcard-meta"><div class="pcard-name">Priya, 31</div><div class="pcard-role">The power-user dev</div></div><div class="pcard-score score-g">1.8</div></div><blockquote class="pcard-quote">"Clean signup. Tab order works perfectly. API docs are exactly where I expected. This is well built. I'd pay for this."</blockquote><div class="pcard-footer"><div class="pcard-stuck">Completed goal<strong>No friction points logged</strong></div><div class="pcard-time">Session<strong>1m 47s</strong></div></div></article>
     </div>
   </section>
-
-  <!-- THOUGHT TRANSCRIPT TIMELINE -->
   <section class="transcript-section" aria-labelledby="transcript-heading">
     <div class="transcript-wrap">
       <div class="transcript-header">
-        <div class="panel-title" style="margin-bottom:0;"><i class="fa-solid fa-timeline" aria-hidden="true"></i> <span id="transcript-heading">Session timeline — The skeptical CFO</span></div>
-        <div class="transcript-persona-select" role="group" aria-label="Select persona for timeline">
-          <button class="tps-btn active" type="button" aria-pressed="true">Skeptical CFO</button>
-          <button class="tps-btn" type="button" aria-pressed="false">Confused senior</button>
-          <button class="tps-btn" type="button" aria-pressed="false">Power-user dev</button>
+        <div class="panel-title" style="margin-bottom:0;"><i class="fa-solid fa-timeline" aria-hidden="true"></i><span id="transcript-heading">Session timeline — Diane, 52</span></div>
+        <div class="transcript-persona-select" role="group" aria-label="Select persona">
+          <button class="tps-btn active" type="button" aria-pressed="true">Diane</button>
+          <button class="tps-btn" type="button" aria-pressed="false">Margaret</button>
+          <button class="tps-btn" type="button" aria-pressed="false">Priya</button>
         </div>
       </div>
-      <div class="timeline" role="list" aria-label="Session timeline for The skeptical CFO">
-        <div class="tl-item" role="listitem">
-          <div class="tl-time-col">
-            <div class="tl-time">0:00</div>
-            <div class="tl-line" aria-hidden="true"></div>
-          </div>
-          <div class="tl-content">
-            <div class="tl-step" style="color:var(--green)">Step 1 — Landing page</div>
-            <div class="tl-thought">"Ok, 'find out why they didn't buy' — that's interesting. I get what this does. Let me look around before I commit to anything."</div>
-            <div class="tl-action"><i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i> Scrolled landing page, read hero and stats section <span class="tl-friction tf-low" aria-label="Low friction">1.2</span></div>
-          </div>
-        </div>
-        <div class="tl-item" role="listitem">
-          <div class="tl-time-col">
-            <div class="tl-time">0:28</div>
-            <div class="tl-line" aria-hidden="true"></div>
-          </div>
-          <div class="tl-content">
-            <div class="tl-step" style="color:var(--amber)">Step 2 — Signup form</div>
-            <div class="tl-thought">"Nine fields. Why do they need my company size before I've even used it? This feels like a lot to ask before I've seen anything."</div>
-            <div class="tl-action"><i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i> Began filling form, paused at field 4 of 9 <span class="tl-friction tf-mid" aria-label="Medium friction">5.8</span></div>
-          </div>
-        </div>
-        <div class="tl-item" role="listitem">
-          <div class="tl-time-col">
-            <div class="tl-time">0:51</div>
-            <div class="tl-line" aria-hidden="true"></div>
-          </div>
-          <div class="tl-content">
-            <div class="tl-step" style="color:var(--amber)">Step 2 — Pricing search</div>
-            <div class="tl-thought">"Wait, before I finish this form I want to know what this costs. Let me check the nav... Pricing isn't in the nav. Let me scroll down."</div>
-            <div class="tl-action"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Searched nav, scrolled page looking for pricing link <span class="tl-friction tf-mid" aria-label="Medium friction">6.1</span></div>
-          </div>
-        </div>
-        <div class="tl-item" role="listitem">
-          <div class="tl-time-col">
-            <div class="tl-time">1:04</div>
-            <div class="tl-line" aria-hidden="true"></div>
-          </div>
-          <div class="tl-content">
-            <div class="tl-step" style="color:var(--red)">Step 3 — Pricing not found</div>
-            <div class="tl-thought">"I've been looking for 30 seconds and there's no pricing anywhere visible. I'm not handing over my card without knowing the cost. This is a dealbreaker."</div>
-            <div class="tl-action"><i class="fa-solid fa-xmark" aria-hidden="true"></i> Closed tab. Session ended. <span class="tl-friction tf-high" aria-label="High friction">9.4</span></div>
-          </div>
-        </div>
+      <div class="timeline" role="list">
+        <div class="tl-item" role="listitem"><div class="tl-time-col"><div class="tl-time">0:00</div><div class="tl-line" aria-hidden="true"></div></div><div class="tl-content"><div class="tl-step" style="color:var(--green)">Step 1 — Landing page</div><div class="tl-thought">"Ok, 'find out why they didn't buy' — that's interesting. I get what this does. Let me look around before I commit to anything."</div><div class="tl-action"><i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i> Scrolled landing page, read hero and stats section <span class="tl-friction tf-low">1.2</span></div></div></div>
+        <div class="tl-item" role="listitem"><div class="tl-time-col"><div class="tl-time">0:28</div><div class="tl-line" aria-hidden="true"></div></div><div class="tl-content"><div class="tl-step" style="color:var(--amber)">Step 2 — Signup form</div><div class="tl-thought">"Nine fields. Why do they need my company size before I've even used it? This feels like a lot to ask before I've seen anything."</div><div class="tl-action"><i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i> Began filling form, paused at field 4 of 9 <span class="tl-friction tf-mid">5.8</span></div></div></div>
+        <div class="tl-item" role="listitem"><div class="tl-time-col"><div class="tl-time">0:51</div><div class="tl-line" aria-hidden="true"></div></div><div class="tl-content"><div class="tl-step" style="color:var(--amber)">Step 2 — Pricing search</div><div class="tl-thought">"Wait, before I finish this form I want to know what this costs. Let me check the nav... Pricing isn't in the nav. Let me scroll down."</div><div class="tl-action"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Searched nav, scrolled page looking for pricing <span class="tl-friction tf-mid">6.1</span></div></div></div>
+        <div class="tl-item" role="listitem"><div class="tl-time-col"><div class="tl-time">1:04</div><div class="tl-line" aria-hidden="true"></div></div><div class="tl-content"><div class="tl-step" style="color:var(--red)">Step 3 — Abandoned</div><div class="tl-thought">"I've been looking for 30 seconds and there's no pricing anywhere visible. I'm not handing over my card without knowing the cost. This is a dealbreaker."</div><div class="tl-action"><i class="fa-solid fa-xmark" aria-hidden="true"></i> Closed tab. Session ended. <span class="tl-friction tf-high">9.4</span></div></div></div>
       </div>
     </div>
   </section>
-
-  <!-- KEY FINDING -->
   <section class="key-finding" aria-labelledby="finding-heading">
     <div class="kf-icon" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></div>
-    <div>
-      <div class="kf-title" id="finding-heading">Critical finding — pricing visibility is killing conversions</div>
-      <div class="kf-body">6 of 7 personas actively searched for pricing before completing signup and couldn't find it. Surfacing a simple pricing line or "starts at $X" in the signup flow or nav could recover the majority of these drop-offs. This is the single highest-impact fix available.</div>
-    </div>
-    <div class="kf-stat">
-      <div class="kf-stat-num" aria-label="86 percent">86%</div>
-      <div class="kf-stat-label">Personas couldn't find pricing</div>
-    </div>
+    <div><div class="kf-title" id="finding-heading">Critical finding — pricing visibility is killing conversions</div><div class="kf-body">6 of 7 personas actively searched for pricing before completing signup and couldn't find it. Surfacing a simple pricing line or "starts at $X" in the signup flow or nav could recover the majority of these drop-offs.</div></div>
+    <div class="kf-stat"><div class="kf-stat-num">86%</div><div class="kf-stat-label">Couldn't find pricing</div></div>
   </section>
-
-  <!-- FOOTER -->
   <footer class="report-footer">
-    <div class="footer-logo">
-      <i class="fa-solid fa-brain" aria-hidden="true"></i>
-      <span>Generated by <strong>PersonaIQ</strong> · personaiq.app</span>
-    </div>
-    <div>Report #2847 · March 28, 2026 · 7 personas · 4m 12s avg session</div>
+    <div class="footer-logo"><i class="fa-solid fa-brain" aria-hidden="true"></i><span>Generated by <strong>PersonaIQ</strong> · personaiq.app</span></div>
+    <div>Sample report · 7 personas · 4m 12s avg session</div>
   </footer>
-
 </main>
-
-<style>
-.visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-</style>
-
+</div>
 <script>
 document.querySelectorAll('.tps-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.tps-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
     this.classList.add('active');
     this.setAttribute('aria-pressed','true');
-    const heading = document.getElementById('transcript-heading');
-    heading.textContent = 'Session timeline — ' + this.textContent.trim();
+    document.getElementById('transcript-heading').textContent = 'Session timeline — ' + this.textContent.trim();
   });
 });
-
 document.querySelectorAll('.persona-row').forEach(row => {
   row.addEventListener('click', function() {
     document.querySelectorAll('.persona-row').forEach(r => { r.classList.remove('active'); r.setAttribute('aria-pressed','false'); });
@@ -878,15 +365,60 @@ document.querySelectorAll('.persona-row').forEach(row => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
   });
 });
-
-document.querySelector('.nav-share').addEventListener('click', function() {
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(window.location.href);
-    this.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-    setTimeout(() => { this.innerHTML = '<i class="fa-solid fa-share-nodes"></i> Share report'; }, 2000);
-  }
-});
 </script>
 
+<script>
+(function() {
+  var steps = [
+    { pct: 8,  label: "Launching 7 personas...", thought: "" },
+    { pct: 18, label: "Diane is navigating the landing page...", thought: "Diane: 'Ok, I get what this does. Let me find the pricing before I do anything else.'" },
+    { pct: 28, label: "Margaret is reading the homepage...", thought: "Margaret: 'This looks interesting but I'm not sure what I'm supposed to click first.'" },
+    { pct: 38, label: "Marcus found the sign up button...", thought: "Marcus: 'Good — straightforward CTA. Let's go. I have 3 minutes.'" },
+    { pct: 48, label: "Diane is searching for pricing...", thought: "Diane: 'I've been scrolling for 30 seconds. There's no pricing anywhere. This is a red flag.'" },
+    { pct: 56, label: "DeShawn is testing keyboard navigation...", thought: "DeShawn: 'Focus just jumped to the footer after that modal closed. I lost my place completely.'" },
+    { pct: 65, label: "Margaret encountered a layout change...", thought: "Margaret: 'Everything looks different now. Did I do something wrong? I do not know how to go back.'" },
+    { pct: 74, label: "Priya completed the goal...", thought: "Priya: 'Clean signup. Tab order works. API docs right where I expected. I'd pay for this.'" },
+    { pct: 82, label: "Aaliyah reviewing privacy policy...", thought: "Aaliyah: 'The privacy link is buried in the footer. That's a blocker for my security team.'" },
+    { pct: 90, label: "Generating friction scores...", thought: "Marcus: 'Empty dashboard with no onboarding. I have 47 other tabs. I'm done.'" },
+    { pct: 96, label: "Compiling key findings...", thought: "6 of 7 personas never found the pricing page." },
+    { pct: 100, label: "Analysis complete.", thought: "" }
+  ];
+
+  var bar = document.getElementById('loading-bar');
+  var label = document.getElementById('loading-label');
+  var pct = document.getElementById('loading-pct');
+  var thought = document.getElementById('thought-line');
+  var screen = document.getElementById('loading-screen');
+  var main = document.getElementById('main-content');
+
+  var i = 0;
+  function nextStep() {
+    if (i >= steps.length) {
+      setTimeout(function() {
+        screen.style.opacity = '0';
+        screen.style.transition = 'opacity 0.6s ease';
+        main.style.opacity = '1';
+        setTimeout(function() { screen.style.display = 'none'; }, 700);
+      }, 300);
+      return;
+    }
+    var s = steps[i];
+    bar.style.width = s.pct + '%';
+    label.textContent = s.label;
+    pct.textContent = s.pct + '%';
+    if (s.thought) {
+      thought.style.opacity = '0';
+      setTimeout(function() {
+        thought.textContent = s.thought;
+        thought.style.opacity = '1';
+      }, 200);
+    }
+    i++;
+    var delay = i === steps.length ? 600 : 380;
+    setTimeout(nextStep, delay);
+  }
+  setTimeout(nextStep, 400);
+})();
+</script>
 </body>
 </html>
