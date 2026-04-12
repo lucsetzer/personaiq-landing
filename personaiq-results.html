@@ -398,10 +398,13 @@ document.querySelectorAll('.persona-row').forEach(row => {
         screen.style.opacity = '0';
         screen.style.transition = 'opacity 0.6s ease';
         main.style.display = 'block';
-        setTimeout(function() { main.style.opacity = '1'; }, 50); 
-        setTimeout(function() { screen.style.display = 'none'; }, 700);
-      return;
-    }
+        setTimeout(function() { 
+          main.style.opacity = '1'; 
+        }, 50);
+        setTimeout(function() { 
+          screen.style.display = 'none'; 
+        }, 700);
+      }, 300);
     var s = steps[i];
     bar.style.width = s.pct + '%';
     label.textContent = s.label;
