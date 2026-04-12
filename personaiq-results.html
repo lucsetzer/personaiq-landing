@@ -397,9 +397,9 @@ document.querySelectorAll('.persona-row').forEach(row => {
       setTimeout(function() {
         screen.style.opacity = '0';
         screen.style.transition = 'opacity 0.6s ease';
-        main.style.opacity = '1';
+        main.style.display = 'block';
+        setTimeout(function() { main.style.opacity = '1'; }, 50); 
         setTimeout(function() { screen.style.display = 'none'; }, 700);
-      }, 300);
       return;
     }
     var s = steps[i];
