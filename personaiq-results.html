@@ -6,7 +6,7 @@
 <title>PersonaIQ — Onboarding Flow Audit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root {
@@ -30,8 +30,8 @@
   --red: #FF4444;
   --red-dim: rgba(255,68,68,0.1);
   --red-border: rgba(255,68,68,0.22);
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Clash Display', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -52,7 +52,7 @@ body {
 }
 .topnav-inner {
   max-width: 1200px; margin: 0 auto;
-  padding: 0 2rem; height: 56px;
+  padding: 0 1rem; height: 56px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -78,7 +78,7 @@ body {
 .nav-share:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
 
 /* LAYOUT */
-.page { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.page { padding: 1rem; }
 
 /* REPORT HEADER */
 .report-header {
@@ -302,20 +302,90 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
-@media (max-width: 900px) {
-  .main-grid { grid-template-columns: 1fr; }
+
+/* ── MOBILE FIRST ── base styles are mobile, scale up */
+
+/* Page padding — tight on mobile */
+.page { padding: 1rem; }
+.topnav-inner { padding: 0 1rem; }
+
+/* Report header — stacked on mobile */
+.report-header { grid-template-columns: 1fr; gap: 1rem; }
+.report-stats { justify-content: flex-start; gap: 1rem; flex-wrap: wrap; }
+.rstat { text-align: left; }
+.rstat-num { font-size: 18px; }
+
+/* Summary strip — stacked on mobile */
+.summary-strip { grid-template-columns: 1fr; gap: 1rem; }
+.big-score { border-right: none; border-bottom: 0.5px solid var(--border); padding-right: 0; padding-bottom: 1rem; margin-bottom: 0; text-align: left; display: flex; align-items: center; gap: 1rem; }
+.big-score-num { font-size: 48px; }
+
+/* Main grid — stacked on mobile */
+.main-grid { grid-template-columns: 1fr; }
+
+/* Persona cards — single col on mobile */
+.persona-cards-grid { grid-template-columns: 1fr; }
+
+/* Key finding — stacked on mobile */
+.key-finding { grid-template-columns: 1fr; gap: 1rem; }
+.kf-stat { border-left: none; border-top: 0.5px solid var(--pink-border); padding-left: 0; padding-top: 1rem; text-align: left; }
+
+/* Nav meta — hide badges on mobile, keep share */
+.nav-badge { display: none; }
+.nav-share { font-size: 11px; padding: 5px 10px; }
+
+/* Transcript selector — wrap on mobile */
+.transcript-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+
+/* Flow bars — slightly smaller on mobile */
+.flow-steps { height: 130px; }
+.flow-bar { width: 38px; }
+.flow-bar-val { font-size: 11px; }
+.flow-step-label { font-size: 9px; }
+
+/* Heatmap — scale down on mobile */
+.heatmap-grid { grid-template-rows: repeat(6, 28px); gap: 2px; }
+
+/* ── TABLET 640px+ ── */
+@media (min-width: 640px) {
+  .page { padding: 1.5rem; }
+  .topnav-inner { padding: 0 1.5rem; }
   .persona-cards-grid { grid-template-columns: 1fr 1fr; }
-  .report-header { grid-template-columns: 1fr; }
-  .report-stats { justify-content: flex-start; }
-}
-@media (max-width: 600px) {
-  .persona-cards-grid { grid-template-columns: 1fr; }
-  .page { padding: 1rem; }
+  .nav-badge { display: inline-flex; }
+  .big-score { display: block; text-align: center; border-right: none; border-bottom: 0.5px solid var(--border); padding-bottom: 1rem; }
+  .big-score-num { font-size: 56px; }
   .summary-strip { grid-template-columns: 1fr; }
-  .big-score { border-right: none; border-bottom: 0.5px solid var(--border); padding-right: 0; padding-bottom: 1rem; margin-bottom: 1rem; }
-  .key-finding { grid-template-columns: 1fr; }
-  .kf-stat { border-left: none; border-top: 0.5px solid var(--pink-border); padding-left: 0; padding-top: 1rem; }
+  .flow-bar { width: 48px; }
+  .flow-bar-val { font-size: 12px; }
+  .flow-step-label { font-size: 10px; }
+  .heatmap-grid { grid-template-rows: repeat(6, 32px); }
+  .transcript-header { flex-direction: row; align-items: center; }
+  .key-finding { grid-template-columns: auto 1fr; }
+  .kf-stat { display: none; }
 }
+
+/* ── DESKTOP 900px+ ── */
+@media (min-width: 900px) {
+  .page { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+  .topnav-inner { padding: 0 2rem; max-width: 1200px; margin: 0 auto; }
+  .report-header { grid-template-columns: 1fr auto; gap: 2rem; }
+  .report-stats { gap: 1.5rem; }
+  .rstat { text-align: right; }
+  .rstat-num { font-size: 22px; }
+  .summary-strip { grid-template-columns: 140px 1fr; }
+  .big-score { border-right: 0.5px solid var(--border); border-bottom: none; padding-right: 1.5rem; padding-bottom: 0; display: block; text-align: center; }
+  .big-score-num { font-size: 64px; }
+  .main-grid { grid-template-columns: 1fr 340px; }
+  .persona-cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .key-finding { grid-template-columns: auto 1fr auto; }
+  .kf-stat { display: block; border-left: 0.5px solid var(--pink-border); border-top: none; padding-left: 1.25rem; padding-top: 0; text-align: center; }
+  .nav-badge { display: inline-flex; }
+  .flow-bar { width: 52px; }
+  .flow-bar-val { font-size: 13px; }
+  .flow-step-label { font-size: 10px; }
+  .heatmap-grid { grid-template-rows: repeat(6, 36px); gap: 3px; }
+}
+
 
 /* Focus styles */
 button:focus-visible, a:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
